@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="ECU.Golf.Views.HistoryScreenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Height="750" Width="1576">
+    <Grid>
+        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource SilverFrame}" Height="750" Width="1576">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Text="HISTORY" Style="{StaticResource StandardFont}" Foreground="Black" FontSize="24" Margin="10,-28,0,0"/>
+
+                <ListBox x:Name="lstHistory" Grid.Column="0" Width="536" Background="Black" HorizontalAlignment="Left" ItemsSource="{Binding HistoryCategories}" 
+                         SelectedItem="{Binding SelectedCategory}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ItemContainerStyle="{StaticResource HistoryListBox}" 
+                         ManipulationBoundaryFeedback="lstHistory_ManipulationBoundaryFeedback"
+                         ScrollViewer.CanContentScroll="False">                    
+                    <!--<ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Style="{StaticResource StandardFont}" FontSize="28" Text="{Binding Value}"
+                                           Foreground="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem, Mode=FindAncestor}, Path=Foreground}"/>
+                                <Image Source="/ECU.Golf;component/Images/divider.png" Stretch="UniformToFill"/>
+                            </StackPanel>
+                        </DataTemplate>
+                        
+                    </ListBox.ItemTemplate>   
+                    <ListBox.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#E1AE53"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="White" />
+                    </ListBox.Resources>-->
+                </ListBox>
+
+                <ListBox Grid.Column="1" Width="1040" HorizontalAlignment="Left" Background="Black" ItemsSource="{Binding SelectedCategoryItems}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ListBoxNoSelection}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Style="{StaticResource StandardFont}" FontSize="28" Foreground="White" Text="{Binding Path=.}"/>
+                                <Image Source="/ECU.Golf;component/Images/divider.png" Stretch="UniformToFill"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

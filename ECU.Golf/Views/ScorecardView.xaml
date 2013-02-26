@@ -1,0 +1,253 @@
+﻿<UserControl x:Class="ECU.Golf.Views.ScorecardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="562" d:DesignWidth="614"
+             Height="520" Width="614">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" x:Name="frontNine">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>      
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="46"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="46"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="69"/>
+            </Grid.ColumnDefinitions>
+            
+            <Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="19" Source="/ECU.Golf;component/Images/cardBase.png" Stretch="None"/>
+            <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="19" Source="/ECU.Golf;component/Images/cardHeader.png" Stretch="None"/>
+
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="1" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" Text="2" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="5" Text="3" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="7" Text="4" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="9" Text="5" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="11" Text="6" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="13" Text="7" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="15" Text="8" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="17" Text="9" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="FRONT" Foreground="#C5EAC9" FontSize="20" Style="{StaticResource ScorecardFont}" Margin="18,0,0,0"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Scorecard.Holes[0].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Scorecard.Holes[1].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="5" Text="{Binding Scorecard.Holes[2].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="7" Text="{Binding Scorecard.Holes[3].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="9" Text="{Binding Scorecard.Holes[4].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="11" Text="{Binding Scorecard.Holes[5].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="13" Text="{Binding Scorecard.Holes[6].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="15" Text="{Binding Scorecard.Holes[7].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="17" Text="{Binding Scorecard.Holes[8].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="18" Text="{Binding OutPar}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" 
+                       Margin="4,0,0,0" Width="48" FontSize="30" HorizontalAlignment="Left" TextAlignment="Center"/>
+            
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Scorecard.Holes[0].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Scorecard.Holes[1].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="5" Text="{Binding Scorecard.Holes[2].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="7" Text="{Binding Scorecard.Holes[3].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="9" Text="{Binding Scorecard.Holes[4].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="11" Text="{Binding Scorecard.Holes[5].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="13" Text="{Binding Scorecard.Holes[6].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="15" Text="{Binding Scorecard.Holes[7].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="17" Text="{Binding Scorecard.Holes[8].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="18" Text="{Binding OutScore}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" 
+                       Margin="4,0,0,0" Width="48" FontSize="37" HorizontalAlignment="Left" TextAlignment="Center"/>
+
+            <Image Grid.Row="2" Grid.Column="1" Source="{Binding Scorecard.Holes[0].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0" />
+            <Image Grid.Row="2" Grid.Column="3" Source="{Binding Scorecard.Holes[1].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="5" Source="{Binding Scorecard.Holes[2].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="7" Source="{Binding Scorecard.Holes[3].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="9" Source="{Binding Scorecard.Holes[4].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="11" Source="{Binding Scorecard.Holes[5].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="13" Source="{Binding Scorecard.Holes[6].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="15" Source="{Binding Scorecard.Holes[7].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="17" Source="{Binding Scorecard.Holes[8].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="FWY:" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="GIR:" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="PUTTS:" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Image Grid.Row="3" Grid.Column="1" Source="{Binding Scorecard.Holes[0].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="3" Source="{Binding Scorecard.Holes[1].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="5" Source="{Binding Scorecard.Holes[2].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="7" Source="{Binding Scorecard.Holes[3].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="9" Source="{Binding Scorecard.Holes[4].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="11" Source="{Binding Scorecard.Holes[5].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="13" Source="{Binding Scorecard.Holes[6].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="15" Source="{Binding Scorecard.Holes[7].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="17" Source="{Binding Scorecard.Holes[8].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+
+            <Image Grid.Row="4" Grid.Column="1" Source="{Binding Scorecard.Holes[0].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="3" Source="{Binding Scorecard.Holes[1].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="5" Source="{Binding Scorecard.Holes[2].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="7" Source="{Binding Scorecard.Holes[3].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="9" Source="{Binding Scorecard.Holes[4].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="11" Source="{Binding Scorecard.Holes[5].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="13" Source="{Binding Scorecard.Holes[6].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="15" Source="{Binding Scorecard.Holes[7].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="17" Source="{Binding Scorecard.Holes[8].GIR, Converter={StaticResource boolToImageConverter}}"/>
+
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Scorecard.Holes[0].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="3" Text="{Binding Scorecard.Holes[1].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="5" Text="{Binding Scorecard.Holes[2].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="7" Text="{Binding Scorecard.Holes[3].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="9" Text="{Binding Scorecard.Holes[4].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="11" Text="{Binding Scorecard.Holes[5].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="13" Text="{Binding Scorecard.Holes[6].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="15" Text="{Binding Scorecard.Holes[7].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="17" Text="{Binding Scorecard.Holes[8].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+
+        </Grid>
+
+        <Grid Grid.Row="1" x:Name="backNine">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="46"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="46"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="69"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="19" Source="/ECU.Golf;component/Images/cardBase.png" Stretch="None"/>
+            <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="19" Source="/ECU.Golf;component/Images/cardHeader.png" Stretch="None"/>
+
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="10" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" Text="11" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="5" Text="12" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="7" Text="13" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="9" Text="14" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="11" Text="15" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="13" Text="16" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="15" Text="17" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="17" Text="18" Foreground="#000000" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="BACK" Foreground="#C5EAC9" FontSize="20" Style="{StaticResource ScorecardFont}" Margin="18,0,0,0"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Scorecard.Holes[9].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Scorecard.Holes[10].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="5" Text="{Binding Scorecard.Holes[11].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="7" Text="{Binding Scorecard.Holes[12].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="9" Text="{Binding Scorecard.Holes[13].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="11" Text="{Binding Scorecard.Holes[14].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="13" Text="{Binding Scorecard.Holes[15].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="15" Text="{Binding Scorecard.Holes[16].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="17" Text="{Binding Scorecard.Holes[17].Par}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="30" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="18" Text="{Binding InPar}" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" 
+                       Margin="4,0,0,0" Width="48" FontSize="30" HorizontalAlignment="Left" TextAlignment="Center"/>
+            
+            <Image Grid.Row="2" Grid.Column="1" Source="{Binding Scorecard.Holes[9].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="3" Source="{Binding Scorecard.Holes[10].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="5" Source="{Binding Scorecard.Holes[11].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="7" Source="{Binding Scorecard.Holes[12].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="9" Source="{Binding Scorecard.Holes[13].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="11" Source="{Binding Scorecard.Holes[14].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="13" Source="{Binding Scorecard.Holes[15].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="15" Source="{Binding Scorecard.Holes[16].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+            <Image Grid.Row="2" Grid.Column="17" Source="{Binding Scorecard.Holes[17].ToParDiff, Converter={StaticResource scoreToImageConverter}}" Margin="0,-15,0,0"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Scorecard.Holes[9].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Scorecard.Holes[10].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="5" Text="{Binding Scorecard.Holes[11].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="7" Text="{Binding Scorecard.Holes[12].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="9" Text="{Binding Scorecard.Holes[13].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="11" Text="{Binding Scorecard.Holes[14].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="13" Text="{Binding Scorecard.Holes[15].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="15" Text="{Binding Scorecard.Holes[16].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="17" Text="{Binding Scorecard.Holes[17].Score, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="37" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="19" Text="{Binding InScore}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" 
+                       Margin="4,0,0,0" Width="48" FontSize="37" HorizontalAlignment="Left" TextAlignment="Center"/>
+            
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="FWY:" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="GIR:" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="PUTTS:" Foreground="#C5EAC9" Style="{StaticResource ScorecardFont}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Image Grid.Row="3" Grid.Column="1" Source="{Binding Scorecard.Holes[9].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="3" Source="{Binding Scorecard.Holes[10].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="5" Source="{Binding Scorecard.Holes[11].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="7" Source="{Binding Scorecard.Holes[12].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="9" Source="{Binding Scorecard.Holes[13].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="11" Source="{Binding Scorecard.Holes[14].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="13" Source="{Binding Scorecard.Holes[15].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="15" Source="{Binding Scorecard.Holes[16].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="3" Grid.Column="17" Source="{Binding Scorecard.Holes[17].Fairway, Converter={StaticResource boolToImageConverter}}"/>
+
+            <Image Grid.Row="4" Grid.Column="1" Source="{Binding Scorecard.Holes[9].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="3" Source="{Binding Scorecard.Holes[10].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="5" Source="{Binding Scorecard.Holes[11].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="7" Source="{Binding Scorecard.Holes[12].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="9" Source="{Binding Scorecard.Holes[13].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="11" Source="{Binding Scorecard.Holes[14].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="13" Source="{Binding Scorecard.Holes[15].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="15" Source="{Binding Scorecard.Holes[16].GIR, Converter={StaticResource boolToImageConverter}}"/>
+            <Image Grid.Row="4" Grid.Column="17" Source="{Binding Scorecard.Holes[17].GIR, Converter={StaticResource boolToImageConverter}}"/>
+
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Scorecard.Holes[9].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="3" Text="{Binding Scorecard.Holes[10].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="5" Text="{Binding Scorecard.Holes[11].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="7" Text="{Binding Scorecard.Holes[12].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="9" Text="{Binding Scorecard.Holes[13].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="11" Text="{Binding Scorecard.Holes[14].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="13" Text="{Binding Scorecard.Holes[15].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="15" Text="{Binding Scorecard.Holes[16].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="17" Text="{Binding Scorecard.Holes[17].Putts, Converter={StaticResource zeroScoreConverter}}" Foreground="#FFFFFF" Style="{StaticResource ScorecardFont}" FontSize="32" HorizontalAlignment="Center"/>
+
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="ECU.Golf.Views.HoleStatsHorizontalView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="64" d:DesignWidth="778"
+             Height="64" Width="778">
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Text="{Binding Hole.HoleNumber}" Style="{StaticResource StandardFont}" FontSize="70" Foreground="White" TextAlignment="Center" Width="76" VerticalAlignment="Center"/>
+        
+        <TextBlock Grid.Column="1" Style="{StaticResource StandardFont}" FontSize="34" Foreground="#C5EAC9" TextAlignment="Right" Width="182" Margin="10,0,0,0" VerticalAlignment="Center">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}Par {0} - {1}y">
+                    <Binding Path="Hole.Par"/>
+                    <Binding Path="Hole.Yardage"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+
+        <TextBlock Grid.Column="2" Text="{Binding HoleStatLine.ScoreAvg}" Style="{StaticResource StandardFont}" FontSize="40" Foreground="White" TextAlignment="Right" Width="138" Margin="10,0,0,0" VerticalAlignment="Center"/>
+
+        <TextBlock Grid.Column="3" Text="{Binding HoleStatLine.ScoreRank}" Style="{StaticResource StandardFont}" FontSize="40" Foreground="#F9D162" TextAlignment="Right" Width="128" Margin="10,0,0,0" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>

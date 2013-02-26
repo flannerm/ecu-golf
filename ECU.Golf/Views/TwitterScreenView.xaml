@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ECU.Golf.Views.TwitterScreenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="1576"
+             Height="750" Width="1576">
+    <Grid>
+        <Border Style="{StaticResource SilverFrame}" Height="750" Width="1576">
+            <Grid>
+                            
+                <TextBlock Grid.Row="0" Text="TWITTER" Style="{StaticResource StandardFont}" Foreground="Black" FontSize="24" Margin="10,-28,0,0"/>
+
+                <ListView x:Name="lstTweets" Grid.Row="1" ItemsSource="{Binding TweetVMs}" Margin="0,10,0,10" 
+                          Width="1056" HorizontalAlignment="Center" ItemContainerStyle="{StaticResource ListViewNoSelection}" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0"
+                          ScrollViewer.PanningRatio="1"
+                          ScrollViewer.PanningMode="VerticalOnly"
+                          ScrollViewer.PanningDeceleration="200"
+                          ManipulationBoundaryFeedback="lstTweets_ManipulationBoundaryFeedback"
+                          ScrollViewer.CanContentScroll="True">
+                    <ListView.Background>
+                        <SolidColorBrush Color="White" Opacity="0.95"/>
+                    </ListView.Background>
+                </ListView>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="ECU.Golf.Views.MapView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"               
+             xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"     
+             xmlns:app="clr-namespace:ECU.Golf"
+             Height="690" Width="1556">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="TeeMarkerTemplate">
+            <Grid m:MapLayer.Position="{Binding Location}" m:MapLayer.PositionOrigin="Center">
+                <Ellipse Width="16" Height="16" Fill="{Binding Fill}" Opacity="0.8" Tag="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Width="12" Height="12" Text="{Binding Description}" Tag="{Binding}" 
+                           TextAlignment="Center" Margin="0,-2,0,0" FontSize="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid> 
+        </DataTemplate>
+
+        <DataTemplate x:Key="PinMarkerTemplate">
+            <Grid m:MapLayer.Position="{Binding Location}" m:MapLayer.PositionOrigin="Center">
+                <Ellipse Width="18" Height="18" Fill="{Binding Fill}" Opacity="0.8" Tag="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Width="12" Height="12" Text="{Binding Description}" Tag="{Binding}" 
+                           TextAlignment="Center" Margin="0,-2,0,0" FontSize="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ShotMarkerTemplate">
+            <Grid m:MapLayer.Position="{Binding Location}" m:MapLayer.PositionOrigin="Center">
+                <Ellipse Width="18" Height="18" Fill="{Binding Fill}" Opacity="0.8" Tag="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Width="12" Height="12" Text="{Binding Description}" Tag="{Binding}" 
+                           TextAlignment="Center" Margin="0,-2,0,0" FontSize="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <m:Map x:Name="myMap" Grid.Column="0" CredentialsProvider="{Binding CredProvider}" ZoomLevel="16" >
+            <m:Map.Mode>
+                <m:AerialMode/>
+            </m:Map.Mode>
+            
+            <m:MapLayer x:Name="linesLayer" Visibility="{Binding LinesShowing, Converter={StaticResource boolToVisibilityConverter}}">
+                <m:MapItemsControl ItemsSource="{Binding LinesLayer}"/>
+            </m:MapLayer>
+
+            <m:MapLayer x:Name="pinsLayer" Visibility="{Binding PinsShowing, Converter={StaticResource boolToVisibilityConverter}}">
+                <m:MapItemsControl ItemsSource="{Binding PinsLayer}" ItemTemplate="{StaticResource PinMarkerTemplate}"/>
+            </m:MapLayer>
+
+            <m:MapLayer x:Name="teesLayer" Visibility="{Binding TeesShowing, Converter={StaticResource boolToVisibilityConverter}}">
+                <m:MapItemsControl ItemsSource="{Binding TeesLayer}" ItemTemplate="{StaticResource TeeMarkerTemplate}"/>
+            </m:MapLayer>
+
+            <m:MapLayer x:Name="playerShotsLinesLayer" Visibility="{Binding PlayerShotsShowing, Converter={StaticResource boolToVisibilityConverter}}">
+                <m:MapItemsControl ItemsSource="{Binding PlayerShotsLinesLayer}"/>
+            </m:MapLayer>
+
+            <m:MapLayer x:Name="playerShotsLayer" Visibility="{Binding PlayerShotsShowing, Converter={StaticResource boolToVisibilityConverter}}">
+                <m:MapItemsControl ItemsSource="{Binding PlayerShotsLayer}" ItemTemplate="{StaticResource ShotMarkerTemplate}"/>
+            </m:MapLayer>
+
+        </m:Map>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5">
+            <Button Name="btnZoomIn" Content="+" Template="{StaticResource RegularButton}" Width="30" Height="30" Background="Black" Click="btnZoomIn_Click" />
+            <Button Name="btnZoomOut" Content="-" Template="{StaticResource RegularButton}" Width="30" Height="30" Background="Black" Click="btnZoomOut_Click"/>
+        </StackPanel>
+        
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Column="0" Grid.Row="0" Content="{Binding ShowTees}" Command="{Binding ShowTeesCommand}" 
+                    Template="{StaticResource RegularButton}" Background="Black" Foreground="White" Width="100" Height="40" VerticalAlignment="Top" Margin="10"/>
+            <Button Grid.Column="1" Grid.Row="0" Content="{Binding ShowPins}" Command="{Binding ShowPinsCommand}" 
+                    Template="{StaticResource RegularButton}" Background="Black" Foreground="White" Width="100" Height="40" VerticalAlignment="Top" Margin="10"/>
+            <Button Grid.Column="2" Grid.Row="0" Content="{Binding ShowLines}" Command="{Binding ShowLinesCommand}" 
+                    Template="{StaticResource RegularButton}" Background="Black" Foreground="White" Width="100" Height="40" VerticalAlignment="Top" Margin="10"/>
+
+            <ListBox x:Name="lstLeaderboard" Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding PlayerVMs}" ItemContainerStyle="{StaticResource ListBoxNoSelection}"                    
+                     ManipulationBoundaryFeedback="lstLeaderboard_ManipulationBoundaryFeedback" HorizontalAlignment="Stretch"
+                     ScrollViewer.CanContentScroll="False">
+                <ListBox.Background>
+                    <SolidColorBrush Color="Black"/>
+                </ListBox.Background>
+                <!--<ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="IsSelected" Value="{Binding Mode=TwoWay, Path=IsSelected}"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>-->
+            </ListBox>
+
+
+        </Grid>
+    </Grid>
+</UserControl>

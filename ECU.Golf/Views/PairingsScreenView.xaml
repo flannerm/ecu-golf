@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="ECU.Golf.Views.PairingsScreenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:app="clr-namespace:ECU.Golf"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="1576"
+             Height="750" Width="1576">
+    <Grid>
+
+        <TextBox x:Name="playerSearch" Text="{Binding PlayerSearch}" Height="0" Width="0" Foreground="White" TextChanged="playerSearch_TextChanged"/>
+
+        <Border Style="{StaticResource SilverFrame}" Height="750" Width="1576">
+            <Grid Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="52"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="PAIRINGS" Style="{StaticResource StandardFont}" Foreground="Black" FontSize="24" Margin="10,-28,0,0"/>
+                
+                <Grid Name="roundButtons" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Background="Black" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <RadioButton Grid.Column="0" Height="40" Width="100" Content="RD 1" FontSize="30" Foreground="Black"                                  
+                                 IsChecked="{Binding Path=SelectedRound, Converter={StaticResource enumToBoolConverter}, ConverterParameter=1}" 
+                                 Template="{StaticResource RoundButton}" Margin="0,5,0,0"/>
+                    <RadioButton Grid.Column="1" Height="40" Width="100" Content="RD 2" FontSize="30" Foreground="Black" 
+                                 IsChecked="{Binding Path=SelectedRound, Converter={StaticResource enumToBoolConverter}, ConverterParameter=2}"
+                                 Template="{StaticResource RoundButton}" Margin="10,5,0,0"/>
+                    <RadioButton Grid.Column="2" Height="40" Width="100" Content="RD 3" FontSize="30" Foreground="Black" 
+                                 IsChecked="{Binding Path=SelectedRound, Converter={StaticResource enumToBoolConverter}, ConverterParameter=3}"
+                                 Template="{StaticResource RoundButton}" Margin="10,5,0,0"/>
+                    <RadioButton Grid.Column="3" Height="40" Width="100" Content="RD 4" FontSize="30" Foreground="Black" 
+                                 IsChecked="{Binding Path=SelectedRound, Converter={StaticResource enumToBoolConverter}, ConverterParameter=4}"
+                                 Template="{StaticResource RoundButton}" Margin="10,5,0,0"/>
+
+                </Grid>
+
+                <ListView x:Name="lstPairings" Grid.Row="1" ItemsSource="{Binding PairingVMs}" Background="Black" Margin="10,10,0,0" 
+                          Width="1536" HorizontalAlignment="Left" ItemContainerStyle="{StaticResource ListBoxNoSelection}" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0"
+                          ManipulationBoundaryFeedback="lstPairings_ManipulationBoundaryFeedback"
+                          ScrollViewer.CanContentScroll="False">
+                    
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate >
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+                
+            </Grid>
+                 
+
+        </Border>
+    </Grid>
+</UserControl>

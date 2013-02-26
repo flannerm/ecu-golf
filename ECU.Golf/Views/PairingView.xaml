@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="ECU.Golf.Views.PairingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="718"
+             Width="718" Height="Auto">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+           
+        <Grid Grid.Row="0">
+            <Image Source="/ECU.Golf;component/Images/barClean.png" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="None"/>
+        
+            <TextBlock Style="{StaticResource StandardFont}" FontWeight="Bold" FontSize="24" Foreground="Black" Margin="10,0,10,0">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0}, Hole {1}">
+                        <Binding Path="Pairing.FormattedTeeTime"/>
+                        <Binding Path="Pairing.StartHole"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </Grid>
+
+        <ListBox Grid.Row="1" ItemsSource="{Binding PlayerVMs}" Background="{x:Null}" SelectedItem="{Binding SelectedPlayer}" BorderThickness="0"
+                 ItemContainerStyle="{StaticResource ListBoxNoSelection}" SelectionMode="Single"
+                 ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+        </ListBox>
+
+    </Grid>
+
+</UserControl>

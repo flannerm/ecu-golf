@@ -1,0 +1,92 @@
+﻿<Window x:Class="ECU.Golf.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ECU.Golf.ViewModels"
+        Title="MainView" 
+        WindowStyle="None"
+        WindowState="Maximized"
+        KeyDown="Window_KeyDown"
+        ResizeMode="CanResizeWithGrip"
+        Height="900" Width="1600" Icon="/ECU.Golf;component/espngolfscoring.ico">
+    
+    <Viewbox>
+        <Canvas Width="1600" Height="900">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/ECU.Golf;component/Images/background.jpg" Stretch="None"/>
+            </Canvas.Background>
+
+            <Grid Canvas.Top="0" Canvas.Left="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="770"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1600"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0" Width="1590" Margin="10,10,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="170"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Grid.Column="0" Grid.ColumnSpan="3" Source="/ECU.Golf;component/Images/mainBar.png" Stretch="UniformToFill"/>
+
+                    <Image Grid.Column="0" Source="/ECU.Golf;component/Images/ESPN_RED.png" Stretch="None" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+
+                    <TextBlock Grid.Column="1" Text="{Binding TournamentName}" Style="{StaticResource TitleFont}" FontSize="52" Foreground="#000000"
+                               Width="Auto" TextAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="5" Color="#ffffff" Direction="0" Opacity="1" ShadowDepth="1" />
+                        </TextBlock.Effect>
+
+                    </TextBlock>
+
+                    <TextBlock x:Name="versionTxt" Grid.Column="2" Foreground="#333333" FontSize="20" Style="{StaticResource StandardFont}"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,0"/>
+                </Grid>
+
+                <ContentControl Grid.Row="1" Grid.Column="0" Width="1576" Height="750" Content="{Binding CurrentScreen}"/>
+                
+                <Grid Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ECU.Golf;component/Images/nav_arm.png"/>
+
+                        <RadioButton Content="HOME" IsChecked="{Binding Path=ScreenType, Converter={StaticResource enumToBoolConverter}, ConverterParameter={x:Static local:ScreenTypes.Home}}" Margin="0,0,0,10" Template="{StaticResource NavButton}" Command="{Binding LoadHomeScreenCommand}"/>
+
+                        <RadioButton Content="PAIRINGS" IsChecked="{Binding Path=ScreenType, Converter={StaticResource enumToBoolConverter}, ConverterParameter={x:Static local:ScreenTypes.Pairings}}" Margin="0,0,0,10" Template="{StaticResource NavButton}" Command="{Binding LoadPairingsScreenCommand}"/>
+
+                        <RadioButton Content="TRACKING" IsChecked="{Binding Path=ScreenType, Converter={StaticResource enumToBoolConverter}, ConverterParameter={x:Static local:ScreenTypes.Tracking}}" Margin="0,0,0,10" Template="{StaticResource NavButton}" Command="{Binding LoadTrackingScreenCommand}"/>
+                        
+                        <RadioButton Content="HOLE STATS" IsChecked="{Binding Path=ScreenType, Converter={StaticResource enumToBoolConverter}, ConverterParameter={x:Static local:ScreenTypes.HoleStats}}" Margin="0,0,0,10" Template="{StaticResource NavButton}" Command="{Binding LoadHoleStatsScreenCommand}"/>
+                        
+                        <RadioButton Content="RESEARCH" IsChecked="{Binding Path=ScreenType, Converter={StaticResource enumToBoolConverter}, ConverterParameter={x:Static local:ScreenTypes.Research}}" Margin="0,0,0,10" Template="{StaticResource NavButton}" Command="{Binding LoadResearchScreenCommand}"/>
+
+                        <RadioButton Content="HISTORY" IsChecked="{Binding Path=ScreenType, Converter={StaticResource enumToBoolConverter}, ConverterParameter={x:Static local:ScreenTypes.History}}" Margin="0,0,0,10" Template="{StaticResource NavButton}" Command="{Binding LoadHistoryScreenCommand}"/>
+
+                        <RadioButton Content="TWITTER" IsChecked="{Binding Path=ScreenType, Converter={StaticResource enumToBoolConverter}, ConverterParameter={x:Static local:ScreenTypes.Twitter}}" Margin="0,0,0,10" Template="{StaticResource NavButton}" Command="{Binding LoadTwitterScreenCommand}"/>
+
+                        <!--<RadioButton Content="SHOT LOG" IsChecked="{Binding Path=ScreenType, Converter={StaticResource enumToBoolConverter}, ConverterParameter={x:Static local:ScreenTypes.ShotLog}}" Margin="0,0,0,10" Template="{StaticResource NavButton}" Command="{Binding LoadShotLogScreenCommand}"/>-->
+
+                        <Image Source="/ECU.Golf;component/Images/nav_arm_r.png"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="20,0,0,15">
+                            <TextBlock Style="{StaticResource StandardFont}" FontSize="24" Foreground="White" Text="Search:" VerticalAlignment="Center"/>
+                            <TextBox Height="Auto" Width="160" Text="{Binding PlayerSearch, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"
+                                     Padding="0" FontFamily="Klavika" FontSize="24" Margin="10,0,0,0"/>
+                            <Button Content="X" Foreground="Red" FontSize="24" Template="{StaticResource RegularButton}" Width="40" Margin="5,0,0,0"
+                                    Command="{Binding ClearSearchTextCommand}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+
+                <!--<Rectangle Width="1576" Height="750" Fill="Pink" Grid.Row="1" Grid.Column="0" Visibility="{Binding PlayerPopupVisibility}"/>-->
+                <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding PlayerPopup}" Visibility="{Binding PlayerPopupVisibility}"/>
+
+            </Grid>
+        </Canvas>
+    </Viewbox>
+</Window>

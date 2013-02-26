@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="ECU.Golf.Views.ChatMessageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="714"
+             Height="Auto" Width="714">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="357"/>
+            <ColumnDefinition Width="357"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="{Binding UserName}" Style="{StaticResource StandardFont}" HorizontalAlignment="Left"
+                   FontSize="22" Foreground="Gray"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Height="Auto">
+            <Polygon Points="0,0 8,5, 0,10" Stroke="#F9D162" Fill="#F9D162" VerticalAlignment="Top" Margin="0,8,0,0" />
+            <TextBlock Text="{Binding MessageText}" HorizontalAlignment="Left" Width="680" Margin="5,0,0,0"
+                    Style="{StaticResource StandardFont}" FontSize="22" Height="Auto" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" />
+        </StackPanel>
+        
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Timestamp}" HorizontalAlignment="Right" TextAlignment="Right"
+                   Style="{StaticResource StandardFont}" FontSize="22" Foreground="Gray"/>
+                        
+    </Grid>
+</UserControl>
